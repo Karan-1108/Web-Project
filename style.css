@@ -237,8 +237,7 @@
 }
 
 .dashboard-page tr:hover td {
-    background-color: #e5ff00c2;
-    transform:scale(1.1);   
+    background-color: #e5ff00c2;  
     background:lightgreen;
     text-align:center;
     font-weight: 600;
