@@ -1,0 +1,82 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Login Page</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content=" This is a Login Website ">
+        <meta name="keywords" content="HTML , CSS , JavaScript , Login System">
+        <meta name="author" content="Karan Singh">
+        <meta http-equiv="refresh" content="60">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <script src="script.js"></script>
+    <body class="login-page">
+
+    <div class="container">
+
+        <div class="header">
+            <h2>User Login</h2>
+            <img src="VIT_LOGO.png" alt="Logo">
+        </div>
+
+        <form onsubmit="validate(event)">
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" id="fname" placeholder="Enter Your First Name " required>
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" id="lname" placeholder="Enter Your Last Name "required>
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Enter Your Email Id "required>
+            </div>
+
+            <div class="form-group">
+                <label>Address</label>
+                <textarea id="address" rows="4" placeholder="Enter Your Residential Address"required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile Number</label>
+                <input type="number" id="mobile" placeholder="Enter Your Mobile Number" required>
+            </div>
+
+            <label>Select Role</label>
+            <select id="role" required>
+                <option value="">-- Select Your Role --</option>
+                <option value="Student">Student</option>
+                <option value="Faculty">Faculty</option>
+            </select>
+
+            <div class="form-group">
+                <label>Username</label>
+                <input type="text" id="username" placeholder="Enter Your Username" required>
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" id="password"  placeholder="Enter Your Password" required>
+            </div>
+
+            <button type="submit" class="btn login-btn">Login</button>
+            <button type="button" class="btn clear-btn" onclick="clearForm()">Clear All Credentials</button>
+            <button type="button" class="btn back-btn" onclick="window.location.href='Home_Page.html'">
+                Back to Home
+            </button>
+        </form>
+
+    </div>
+
+    <div id="movingMarquee">
+        <div class="marquee-text">
+            Fill the form to login to your Dashboard 
+        </div>
+    </div>
+    <div id="imageStack"></div>
+    </body>
+    </html> 
