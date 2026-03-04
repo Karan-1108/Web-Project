@@ -35,52 +35,86 @@ document.addEventListener("DOMContentLoaded", function () {
 function validate(event) {
     event.preventDefault();
 
-    let fname = document.getElementById("fname");
-    let lname = document.getElementById("lname");
-    let email = document.getElementById("email");
-    let username = document.getElementById("username");
-    let password = document.getElementById("password");
-    let role = document.getElementById("role");
+    // Get elements
+    const fname = document.getElementById("fname");
+    const lname = document.getElementById("lname");
+    const email = document.getElementById("email");
+    const mobile = document.getElementById("mobile");
+    const username = document.getElementById("username");
+    const password = document.getElementById("password");
+    const role = document.getElementById("role");
 
-    if (!fname) return;   
+    // Trim values once
+    const firstName = fname.value.trim();
+    const lastName = lname.value.trim();
+    const emailValue = email.value.trim();
+    const mobileValue = mobile.value.trim();
+    const userValue = username.value.trim();
+    const pwd = password.value.trim();
 
-    if (fname.value.trim() === "") { alert("First Name not filled"); fname.focus(); return; }
-    if (lname.value.trim() === "") { alert("Last Name not filled"); lname.focus(); return; }
-    if (email.value.trim() === "") { alert("Email not filled"); email.focus(); return; }
-    if (role.value === "") { alert("Please select your role"); role.focus(); return; }
-    if (username.value.trim() === "") { alert("Username not filled"); username.focus(); return; }
-    if (password.value.trim() === "") { alert("Password not filled"); password.focus(); return; }
+    // Empty field validation
+    if (!firstName) return showError(fname, "First Name not filled");
+    if (!lastName) return showError(lname, "Last Name not filled");
+    if (!emailValue) return showError(email, "Email not filled");
+    if (!mobileValue) return showError(mobile, "Mobile Number not filled");
+    if (!role.value) return showError(role, "Please select your role");
+    if (!userValue) return showError(username, "Username not filled");
+    if (!pwd) return showError(password, "Password not filled");
 
-    let pwd = password.value;
-
-    function shakePassword(message) {
-        password.classList.add("shake");
-        alert(message);
-        password.focus();
-        setTimeout(() => {
-            password.classList.remove("shake");
-        }, 400);
+    // Email validation (simple pattern)
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailPattern.test(emailValue)) {
+        return showError(email, "Enter a valid email address");
     }
 
-    if (!/[a-z]/.test(pwd)) { shakePassword("Password should contain at least 1 lowercase letter"); return; }
-    if (!/[A-Z]/.test(pwd)) { shakePassword("Password should contain at least 1 uppercase letter"); return; }
-    if (!/[0-9]/.test(pwd)) { shakePassword("Password should contain at least 1 number"); return; }
-    if (!/[@$!%*?&]/.test(pwd)) { shakePassword("Password should contain at least 1 special character"); return; }
-    if (pwd.length < 7) { shakePassword("Password should be at least 7 characters long"); return; }
+    // Mobile validation (10 digits)
+    const mobilePattern = /^[0-9]{10}$/;
+    if (!mobilePattern.test(mobileValue)) {
+        return showError(mobile, "Mobile number must be 10 digits");
+    }
+
+    // Password validation
+    if (pwd.length < 8)
+        return shakePassword(password, "Password must be at least 8 characters long");
+
+    if (!/[a-z]/.test(pwd))
+        return shakePassword(password, "Password must contain at least 1 lowercase letter");
+
+    if (!/[A-Z]/.test(pwd))
+        return shakePassword(password, "Password must contain at least 1 uppercase letter");
+
+    if (!/[0-9]/.test(pwd))
+        return shakePassword(password, "Password must contain at least 1 number");
+
+    if (!/[@$!%*?&]/.test(pwd))
+        return shakePassword(password, "Password must contain at least 1 special character");
 
     alert("Login Successful!");
-
+    
     localStorage.setItem("loggedIn", "true");
-    localStorage.setItem("fname", fname.value);
-    localStorage.setItem("lname", lname.value);
-    localStorage.setItem("email", email.value);
-    localStorage.setItem("mobile", document.getElementById("mobile").value);
-    localStorage.setItem("username", username.value);
+    localStorage.setItem("fname", firstName);
+    localStorage.setItem("lname", lastName);
+    localStorage.setItem("email", emailValue);
+    localStorage.setItem("mobile", mobileValue);
+    localStorage.setItem("username", userValue);
     localStorage.setItem("role", role.value);
 
-    window.open("Dashboard.html", "_blank");
+    window.location.href = "Dashboard.html";
 }
 
+function showError(element, message) {
+    alert(message);
+    element.focus();
+}
+
+function shakePassword(element, message) {
+    element.classList.add("shake");
+    alert(message);
+    element.focus();
+    setTimeout(() => {
+        element.classList.remove("shake");
+    }, 400);
+}
 
 function clearForm() {
     const form = document.querySelector("form");
