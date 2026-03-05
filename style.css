@@ -157,8 +157,6 @@
     border: 3.3px solid goldenrod;
     margin-bottom: 12px;
     font-size: 22px;
-
-    /* Smooth animation */
     transition: all 0.4s ease;
 }
 
@@ -465,8 +463,6 @@ display: inline-block;
     border: 3px solid goldenrod;
     margin-bottom: 12px;
     font-size: 22px;
-
-    /* Smooth animation */
     transition: all 0.4s ease;
 }
 
