@@ -150,20 +150,21 @@
 .dashboard-page .card {
     background: linear-gradient(135deg, #dbeafe, #bfdbfe);
     width: 320px;
-    height:fit-content;
+    height: fit-content;
     padding: 35px;
     border-radius: 12px;
     text-align: center;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-    transition: 0.35s ease;
     border: 3.3px solid goldenrod;
     margin-bottom: 12px;
     font-size: 22px;
+
+    /* Smooth animation */
+    transition: all 0.4s ease;
 }
 
 .dashboard-page .card:hover {
-   transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    transform: scale(1.07);
+    animation: borderGlow 1.5s infinite;
 }
 
 .dashboard-page .card h3 {
@@ -461,11 +462,12 @@ display: inline-block;
     width: 320px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.15);
-    transition: 0.35s ease;
     border: 3px solid goldenrod;
     margin-bottom: 12px;
     font-size: 22px;
+
+    /* Smooth animation */
+    transition: all 0.4s ease;
 }
 
 .home-page .feature-box p {
@@ -477,8 +479,8 @@ display: inline-block;
 }
 
 .home-page .feature-box:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+    transform: scale(1.07);
+    animation: borderGlow 1.5s infinite;
 }
 
 .home-page .about {
