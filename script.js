@@ -35,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function () {
 function validate(event) {
     event.preventDefault();
 
-    // Get elements
     const fname = document.getElementById("fname");
     const lname = document.getElementById("lname");
     const email = document.getElementById("email");
@@ -44,7 +43,7 @@ function validate(event) {
     const password = document.getElementById("password");
     const role = document.getElementById("role");
 
-    // Trim values once
+
     const firstName = fname.value.trim();
     const lastName = lname.value.trim();
     const emailValue = email.value.trim();
@@ -52,7 +51,6 @@ function validate(event) {
     const userValue = username.value.trim();
     const pwd = password.value.trim();
 
-    // Empty field validation
     if (!firstName) return showError(fname, "First Name not filled");
     if (!lastName) return showError(lname, "Last Name not filled");
     if (!emailValue) return showError(email, "Email not filled");
@@ -61,13 +59,11 @@ function validate(event) {
     if (!userValue) return showError(username, "Username not filled");
     if (!pwd) return showError(password, "Password not filled");
 
-    // Email validation (simple pattern)
     const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if (!emailPattern.test(emailValue)) {
         return showError(email, "Enter a valid email address");
     }
 
-    // Mobile validation (10 digits)
     const mobilePattern = /^[0-9]{10}$/;
     if (!mobilePattern.test(mobileValue)) {
         return showError(mobile, "Mobile number must be 10 digits");
@@ -189,6 +185,6 @@ function logout() {
 }
 
 function goHome() {
-    localStorage.clear();  // clears everything
+    localStorage.clear();  
     window.location.href = "Home_Page.html";
 } 
